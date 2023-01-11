@@ -1,0 +1,29 @@
+{
+    "screenWidth": 540,
+    "screenHeight": 580,
+    "title": "外星人入侵",
+    "bgColor": {
+        "r": 230,
+        "g": 230,
+        "b": 230,
+        "a": 255
+    },
+    "playerSpeedFactor": 5,
+    "alienSpeedFactor": 1,
+    "bossSpeedFactor": 1,
+    "propSpeedFactor": 1,
+    "bulletWidth": 3,
+    "bulletHeight": 10,
+    "bulletSpeedFactor": 5,
+    "bulletColor": {
+        "r": 80,
+        "g": 80,
+        "b": 80,
+        "a": 255
+    },
+    "maxBulletNum": 100,
+    "bulletInterval": 100,
+    "titleFontSize": 10,
+    "fontSize": 30,
+    "smallFontSize": 10
+}
