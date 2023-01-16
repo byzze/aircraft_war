@@ -19,7 +19,6 @@ import (
 	raudio "github.com/hajimehoshi/ebiten/v2/examples/resources/audio"
 	"github.com/hajimehoshi/ebiten/v2/examples/resources/fonts"
 	"github.com/hajimehoshi/ebiten/v2/text"
-	"github.com/sirupsen/logrus"
 	_ "golang.org/x/image/bmp"
 	"golang.org/x/image/font"
 	"golang.org/x/image/font/opentype"
@@ -219,9 +218,8 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 // 每帧刷新
 func (g *Game) Update() error {
 	for _, v := range g.viewport {
-		v.Move()
+		v.Move(g)
 		if v.outOfScreen(g.cfg) {
-			logrus.Printf("xxx")
 		}
 	}
 	select {

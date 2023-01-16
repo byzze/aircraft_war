@@ -31,15 +31,15 @@ func init() {
 }
 
 func NewViewport(cfg *Config) *Viewport {
-	width, height := alienImg.Size()
+	width, height := bgImage.Size()
 	g := GameObject{
 		width:  width,
 		height: height,
 		x:      0,
-		y:      -160,
+		y:      0,
 	}
 	ent := &Viewport{
-		image:      alienImg,
+		image:      bgImage,
 		GameObject: g,
 	}
 	return ent
@@ -47,29 +47,38 @@ func NewViewport(cfg *Config) *Viewport {
 
 func (viewport *Viewport) Draw(screen *ebiten.Image) {
 	x16, y16 := viewport.Position()
-	offsetX, offsetY := float64(-x16)/16, float64(-y16)/16
-	// Draw bgImage on the screen repeatedly.
-	const repeat = 3
+	offsetX, offsetY := float64(-x16), float64(-y16)/16
 	w, h := bgImage.Size()
+	const repeat = 3
 	for j := 0; j < repeat; j++ {
 		for i := 0; i < repeat; i++ {
 			op := &ebiten.DrawImageOptions{}
-			op.GeoM.Translate(float64(w*i), float64(h*j))
-			op.GeoM.Translate(float64(offsetX), float64(offsetY))
+			x := i * w
+			y := h * j
+			op.GeoM.Translate(float64(x), float64(y))
+			op.GeoM.Translate(offsetX, offsetY)
 			screen.DrawImage(bgImage, op)
 		}
 	}
-
 }
+
 func (viewport *Viewport) outOfScreen(cfg *Config) bool {
-	logrus.Println(viewport.y / 16)
 	return -viewport.y/16 > cfg.ScreenHeight
 }
-func (p *Viewport) Move() {
-	p.y = p.y - 16
-	// maxY16 := p.height * 16
-	p.y += p.height / 32
-	// p.y %= maxY16
+
+func (viewport *Viewport) Move(g *Game) {
+	_, h := bgImage.Size()
+	// maxX16 := w * 16
+	maxY16 := h * 16
+
+	// viewport.x += w / 32
+	viewport.y += h / 32
+	// viewport.x %= maxX16
+	viewport.y %= maxY16
+	if viewport.y >= 3000 {
+		viewport.y = 0
+	}
+	logrus.Info(viewport.y)
 }
 
 func (p *Viewport) Position() (int, int) {

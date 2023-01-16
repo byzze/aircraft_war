@@ -21,9 +21,8 @@ var (
 	playerImage *ebiten.Image
 )
 
-
 func init() {
-	img, _, err := image.Decode(bytes.NewReader(resources.BlastPng))
+	img, _, err := image.Decode(bytes.NewReader(resources.PlayerPng))
 	if err != nil {
 		log.Fatal(err)
 	}
