@@ -1,12 +1,13 @@
 package entry
 
 import (
+	"aircraft_war/resources"
 	"bytes"
-	"first/resources"
-	"github.com/hajimehoshi/ebiten/v2"
 	"image"
 	"log"
 	"math/rand"
+
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type Prop struct {

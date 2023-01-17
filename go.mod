@@ -1,9 +1,7 @@
-module first
-
+module aircraft_war
 go 1.18
 
 require (
-	github.com/go-echarts/go-echarts/v2 v2.2.4
 	github.com/hajimehoshi/ebiten v1.12.12
 	github.com/hajimehoshi/ebiten/v2 v2.4.15
 	github.com/sirupsen/logrus v1.9.0

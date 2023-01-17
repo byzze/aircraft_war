@@ -1,11 +1,12 @@
 package entry
 
 import (
+	"aircraft_war/resources"
 	"bytes"
-	"first/resources"
-	"github.com/hajimehoshi/ebiten/v2"
 	"image"
 	"log"
+
+	"github.com/hajimehoshi/ebiten/v2"
 )
 
 type Blast struct {

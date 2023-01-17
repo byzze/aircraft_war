@@ -1,8 +1,8 @@
 package entry
 
 import (
+	"aircraft_war/resources"
 	"bytes"
-	"first/resources"
 	"image"
 	"log"
 	"math/rand"
